@@ -3,6 +3,8 @@ package develop.shoppingmall;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Member {
+class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +37,13 @@ public class Member {
     private LocalDateTime updatedAt;
 
     @Column(nullable = false)
-    private boolean status;
+    @Enumerated(EnumType.STRING)
+    private MemberStatus status;
 
     protected Member() {
     }
 
-    protected Member(
+    Member(
             String name,
             String email,
             String password
@@ -48,6 +51,10 @@ public class Member {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.status = true;
+        this.status = MemberStatus.ACTIVE;
+    }
+
+    String getEmail() {
+        return email;
     }
 }
