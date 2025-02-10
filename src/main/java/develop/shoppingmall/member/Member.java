@@ -1,4 +1,4 @@
-package develop.shoppingmall;
+package develop.shoppingmall.member;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
