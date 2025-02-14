@@ -14,13 +14,17 @@ class MemberService {
 
     @Transactional
     void join(JoinMemberRequest request) {
+        validateAlreadyExistEmail(request);
+        memberRepository.save(create(request));
+    }
+
+    private void validateAlreadyExistEmail(JoinMemberRequest request) {
         if (memberRepository.existsByEmail(request.email())) {
             throw new AlreadyExistMemberEmailException();
         }
-        memberRepository.save(createNewMember(request));
     }
 
-    private Member createNewMember(JoinMemberRequest request) {
+    private Member create(JoinMemberRequest request) {
         return new Member(
                 request.name(),
                 request.email(),
