@@ -57,4 +57,8 @@ class Member {
     String getEmail() {
         return email;
     }
+
+    String getPassword() {
+        return password;
+    }
 }
