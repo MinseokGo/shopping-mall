@@ -2,7 +2,7 @@ package develop.shoppingmall.member.controller;
 
 import develop.shoppingmall.member.JoinMemberRequest;
 import develop.shoppingmall.member.LoginMemberRequest;
-import develop.shoppingmall.member.MemberService;
+import develop.shoppingmall.member.service.MemberService;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class MemberController {
+public class MemberController {
 
 	private final MemberService memberService;
 

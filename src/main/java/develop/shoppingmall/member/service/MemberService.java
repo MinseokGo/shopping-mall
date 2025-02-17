@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-class MemberService {
+public class MemberService {
 
     private final MemberRepository memberRepository;
 
@@ -22,7 +22,7 @@ class MemberService {
     }
 
     @Transactional
-    void join(JoinMemberRequest request) {
+    public void join(JoinMemberRequest request) {
         validateAlreadyExistEmail(request);
         memberRepository.save(create(request));
     }
@@ -41,7 +41,7 @@ class MemberService {
         );
     }
 
-    void login(LoginMemberRequest request) {
+    public void login(LoginMemberRequest request) {
         FindLoginMemberDTO passwordDTO = memberRepository.findPassword(request.email());
         validateCorrectPassword(request, passwordDTO);
     }

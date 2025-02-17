@@ -3,7 +3,7 @@ package develop.shoppingmall.member.repository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import develop.shoppingmall.member.FindLoginMemberDTO;
-import develop.shoppingmall.member.QMember;
+import develop.shoppingmall.member.domain.QMember;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;
 
