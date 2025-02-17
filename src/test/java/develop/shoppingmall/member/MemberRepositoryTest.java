@@ -32,4 +32,13 @@ class MemberRepositoryTest {
                 memberRepository.existsByEmail("testEmail")
         ).isTrue();
     }
+
+    @Test
+    @DisplayName("멤버의 비밀번호만 조회하는 쿼리 메서드 테스트")
+    void test1() {
+        String email = "testEmail";
+        assertThat(
+                memberRepository.findPassword(email).password()
+        ).isEqualTo("testPassword");
+    }
 }
