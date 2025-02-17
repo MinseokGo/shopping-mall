@@ -1,9 +1,11 @@
 package develop.shoppingmall.member;
 
+import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 class MemberService {
 
     private final MemberRepository memberRepository;
@@ -30,5 +32,16 @@ class MemberService {
                 request.email(),
                 request.password()
         );
+    }
+
+    void login(LoginMemberRequest request) {
+        FindLoginMemberDTO passwordDTO = memberRepository.findPassword(request.email());
+        validateCorrectPassword(request, passwordDTO);
+    }
+
+    private void validateCorrectPassword(LoginMemberRequest request, FindLoginMemberDTO passwordDTO) {
+        if (!Objects.equals(passwordDTO.password(), request.password())) {
+            throw new LoginFailedException();
+        }
     }
 }
