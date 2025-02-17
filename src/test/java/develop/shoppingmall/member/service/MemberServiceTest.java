@@ -2,8 +2,8 @@ package develop.shoppingmall.member.service;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import develop.shoppingmall.member.JoinMemberRequest;
-import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
+import develop.shoppingmall.member.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
 import develop.shoppingmall.member.exception.LoginFailedException;

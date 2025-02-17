@@ -1,8 +1,8 @@
 package develop.shoppingmall.member.service;
 
-import develop.shoppingmall.member.FindLoginMemberDTO;
-import develop.shoppingmall.member.JoinMemberRequest;
-import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.service.dto.FindLoginMemberDTO;
+import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
+import develop.shoppingmall.member.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
 import develop.shoppingmall.member.exception.LoginFailedException;
@@ -19,6 +19,17 @@ public class MemberService {
 
     MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+    }
+
+    public void login(LoginMemberRequest request) {
+        FindLoginMemberDTO passwordDTO = memberRepository.findPassword(request.email());
+        validateCorrectPassword(request, passwordDTO);
+    }
+
+    private void validateCorrectPassword(LoginMemberRequest request, FindLoginMemberDTO passwordDTO) {
+        if (!Objects.equals(passwordDTO.password(), request.password())) {
+            throw new LoginFailedException();
+        }
     }
 
     @Transactional
@@ -39,16 +50,5 @@ public class MemberService {
                 request.email(),
                 request.password()
         );
-    }
-
-    public void login(LoginMemberRequest request) {
-        FindLoginMemberDTO passwordDTO = memberRepository.findPassword(request.email());
-        validateCorrectPassword(request, passwordDTO);
-    }
-
-    private void validateCorrectPassword(LoginMemberRequest request, FindLoginMemberDTO passwordDTO) {
-        if (!Objects.equals(passwordDTO.password(), request.password())) {
-            throw new LoginFailedException();
-        }
     }
 }

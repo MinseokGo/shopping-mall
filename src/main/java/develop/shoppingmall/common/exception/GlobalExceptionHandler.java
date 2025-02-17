@@ -1,4 +1,4 @@
-package develop.shoppingmall;
+package develop.shoppingmall.common.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

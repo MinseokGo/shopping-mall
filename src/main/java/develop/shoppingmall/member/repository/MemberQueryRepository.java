@@ -1,6 +1,6 @@
 package develop.shoppingmall.member.repository;
 
-import develop.shoppingmall.member.FindLoginMemberDTO;
+import develop.shoppingmall.member.service.dto.FindLoginMemberDTO;
 
 interface MemberQueryRepository {
 

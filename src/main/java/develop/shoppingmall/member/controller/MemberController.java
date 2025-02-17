@@ -1,7 +1,7 @@
 package develop.shoppingmall.member.controller;
 
-import develop.shoppingmall.member.JoinMemberRequest;
-import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
+import develop.shoppingmall.member.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.service.MemberService;
 import jakarta.validation.Valid;
 
