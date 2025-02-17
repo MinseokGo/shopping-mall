@@ -8,7 +8,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 class MemberExceptionHandler {
 
     @ExceptionHandler(AlreadyExistMemberEmailException.class)
-    public ResponseEntity<String> alreadyExistMemberEmailException(AlreadyExistMemberEmailException exception) {
+    ResponseEntity<String> alreadyExistMemberEmailException(AlreadyExistMemberEmailException exception) {
+        return ResponseEntity.status(exception.getStatus())
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(LoginFailedException.class)
+    ResponseEntity<String> loginFailedException(LoginFailedException exception) {
         return ResponseEntity.status(exception.getStatus())
                 .body(exception.getMessage());
     }
