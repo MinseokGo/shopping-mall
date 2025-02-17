@@ -41,4 +41,11 @@ class MemberServiceTest {
         JoinMemberRequest request = new JoinMemberRequest("testName", "newEmail", "testPassword");
         memberService.join(request);
     }
+
+    @Test
+    @DisplayName("멤버 로그인 테스트")
+    void test2() {
+        LoginMemberRequest request = new LoginMemberRequest("testEmail", "testPassword");
+        memberService.login(request);
+    }
 }
