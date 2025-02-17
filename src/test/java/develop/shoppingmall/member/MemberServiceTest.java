@@ -32,7 +32,8 @@ class MemberServiceTest {
     void test0() {
         JoinMemberRequest request = new JoinMemberRequest("testName", "testEmail", "testPassword");
         assertThatThrownBy(() -> memberService.join(request))
-                .isInstanceOf(AlreadyExistMemberEmailException.class);
+                .isInstanceOf(AlreadyExistMemberEmailException.class)
+                .hasMessage("[ERROR] 이미 존재하는 이메일입니다.");
     }
 
     @Test
@@ -47,5 +48,14 @@ class MemberServiceTest {
     void test2() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "testPassword");
         memberService.login(request);
+    }
+
+    @Test
+    @DisplayName("멤버 로그인 실패 테스트")
+    void test3() {
+        LoginMemberRequest request = new LoginMemberRequest("testEmail", "incorrectPassword");
+        assertThatThrownBy(() -> memberService.login(request))
+                .isInstanceOf(LoginFailedException.class)
+                .hasMessage("[ERROR] 로그인에 실패 하였습니다.");
     }
 }
