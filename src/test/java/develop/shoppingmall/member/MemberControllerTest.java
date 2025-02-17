@@ -63,7 +63,7 @@ public class MemberControllerTest {
     }
 
     @Test
-    @DisplayName("멤버 회원가입 실패 통합 테스트")
+    @DisplayName("실패 - 멤버 회원가입 통합 테스트")
     void test1() {
         JoinMemberRequest oldRequest = new JoinMemberRequest("testName", "testEmail@email.com", "testPassword");
         given()

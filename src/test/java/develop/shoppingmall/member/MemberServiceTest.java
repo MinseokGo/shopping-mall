@@ -28,7 +28,7 @@ class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("이미 존재하는 이메일로 회원가입 시도 시 예외 처리 테스트")
+    @DisplayName("실패 - 이미 존재하는 이메일로 회원가입 시도 시 예외 처리 테스트")
     void test0() {
         JoinMemberRequest request = new JoinMemberRequest("testName", "testEmail", "testPassword");
         assertThatThrownBy(() -> memberService.join(request))
@@ -51,7 +51,7 @@ class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("멤버 로그인 실패 테스트")
+    @DisplayName("실패 - 멤버 로그인 테스트")
     void test3() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "incorrectPassword");
         assertThatThrownBy(() -> memberService.login(request))
