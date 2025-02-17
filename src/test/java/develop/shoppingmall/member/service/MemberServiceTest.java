@@ -1,7 +1,13 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.service;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import develop.shoppingmall.member.JoinMemberRequest;
+import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.domain.Member;
+import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
+import develop.shoppingmall.member.exception.LoginFailedException;
+import develop.shoppingmall.member.repository.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

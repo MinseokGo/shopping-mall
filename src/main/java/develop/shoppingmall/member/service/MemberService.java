@@ -1,5 +1,12 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.service;
 
+import develop.shoppingmall.member.FindLoginMemberDTO;
+import develop.shoppingmall.member.JoinMemberRequest;
+import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.domain.Member;
+import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
+import develop.shoppingmall.member.exception.LoginFailedException;
+import develop.shoppingmall.member.repository.MemberRepository;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

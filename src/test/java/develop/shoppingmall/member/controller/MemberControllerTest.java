@@ -1,8 +1,10 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.controller;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
+import develop.shoppingmall.member.JoinMemberRequest;
+import develop.shoppingmall.member.repository.MemberRepository;
 import io.restassured.http.ContentType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

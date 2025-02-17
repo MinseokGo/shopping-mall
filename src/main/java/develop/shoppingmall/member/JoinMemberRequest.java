@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-record JoinMemberRequest(
+public record JoinMemberRequest(
 
         @NotBlank(message = "이름을 입력해주세요.")
         @Size(min = 2, max = 16, message = "이름은 2자 이상 16자 이하여야 합니다.")

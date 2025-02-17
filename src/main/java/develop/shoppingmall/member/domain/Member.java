@@ -1,4 +1,4 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-class Member {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ class Member {
     protected Member() {
     }
 
-    Member(
+    public Member(
             String name,
             String email,
             String password

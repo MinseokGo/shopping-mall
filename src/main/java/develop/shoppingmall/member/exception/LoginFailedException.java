@@ -1,12 +1,12 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.exception;
 
 import org.springframework.http.HttpStatus;
 
-class LoginFailedException extends RuntimeException {
+public class LoginFailedException extends RuntimeException {
 
     private static final String LOGIN_FAILED_EXCEPTION_MESSAGE = "[ERROR] 로그인에 실패 하였습니다.";
 
-    LoginFailedException() {
+    public LoginFailedException() {
         super(LOGIN_FAILED_EXCEPTION_MESSAGE);
     }
 

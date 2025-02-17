@@ -1,5 +1,8 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.controller;
 
+import develop.shoppingmall.member.JoinMemberRequest;
+import develop.shoppingmall.member.LoginMemberRequest;
+import develop.shoppingmall.member.MemberService;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;

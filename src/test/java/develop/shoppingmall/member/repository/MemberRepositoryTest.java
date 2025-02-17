@@ -1,8 +1,9 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import develop.shoppingmall.QueryDSLConfig;
+import develop.shoppingmall.member.domain.Member;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

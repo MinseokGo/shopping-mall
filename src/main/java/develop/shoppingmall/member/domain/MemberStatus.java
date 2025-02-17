@@ -1,4 +1,4 @@
-package develop.shoppingmall.member;
+package develop.shoppingmall.member.domain;
 
 public enum MemberStatus {
 
