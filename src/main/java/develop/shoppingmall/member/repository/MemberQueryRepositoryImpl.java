@@ -2,6 +2,7 @@ package develop.shoppingmall.member.repository;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import develop.shoppingmall.member.domain.MemberStatus;
 import develop.shoppingmall.member.domain.QMember;
 import develop.shoppingmall.member.exception.MemberNotFoundException;
 import develop.shoppingmall.member.service.dto.FindLoginMemberDTO;
@@ -29,6 +30,7 @@ class MemberQueryRepositoryImpl implements MemberQueryRepository {
                                 )
                                 .from(member)
                                 .where(member.email.eq(email))
+                                .where(member.status.eq(MemberStatus.ACTIVE))
                                 .fetchOne()
                 )
                 .orElseThrow(MemberNotFoundException::new);
