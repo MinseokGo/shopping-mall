@@ -1,13 +1,12 @@
 package develop.shoppingmall.member.service;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import develop.shoppingmall.auth.dto.LoginMemberRequest;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
-import develop.shoppingmall.member.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
 import develop.shoppingmall.member.exception.LoginFailedException;
 import develop.shoppingmall.member.repository.MemberRepository;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,14 +52,14 @@ class MemberServiceTest {
     @DisplayName("멤버 로그인 테스트")
     void test2() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "testPassword");
-        memberService.login(request);
+        memberService.authenticate(request.email(), request.password());
     }
 
     @Test
     @DisplayName("실패 - 멤버 로그인 테스트")
     void test3() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "incorrectPassword");
-        assertThatThrownBy(() -> memberService.login(request))
+        assertThatThrownBy(() -> memberService.authenticate(request.email(), request.password()))
                 .isInstanceOf(LoginFailedException.class)
                 .hasMessage("[ERROR] 로그인에 실패 하였습니다.");
     }
