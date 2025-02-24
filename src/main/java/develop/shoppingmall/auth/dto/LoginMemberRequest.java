@@ -1,4 +1,4 @@
-package develop.shoppingmall.member.controller.dto;
+package develop.shoppingmall.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
