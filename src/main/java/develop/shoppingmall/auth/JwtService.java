@@ -1,7 +1,15 @@
 package develop.shoppingmall.auth;
 
-import static develop.shoppingmall.auth.JwtUtils.*;
-
+import static develop.shoppingmall.auth.JwtUtils.HOURS;
+import static develop.shoppingmall.auth.JwtUtils.MILLISECONDS;
+import static develop.shoppingmall.auth.JwtUtils.MINUTES;
+import static develop.shoppingmall.auth.JwtUtils.SECONDS;
+import static develop.shoppingmall.auth.JwtUtils.SHOPPING_MALL_AUTH_SUBJECT;
+import static develop.shoppingmall.auth.JwtUtils.TOKEN_BEGIN_INDEX;
+import static develop.shoppingmall.auth.JwtUtils.TOKEN_PREFIX;
+import static develop.shoppingmall.auth.JwtUtils.TOKEN_PROVIDER;
+import static develop.shoppingmall.auth.JwtUtils.TOKEN_SIGN_CLAIM;
+import develop.shoppingmall.auth.exception.InvalidJwtException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Jwts.SIG;
@@ -11,14 +19,10 @@ import io.jsonwebtoken.security.SignatureException;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtService {
-
-    private static final Logger log = LoggerFactory.getLogger(JwtService.class);
 
     private final JwtProperties jwtProperties;
 
@@ -50,17 +54,13 @@ public class JwtService {
         try {
             return extractEmail(token);
         } catch (ExpiredJwtException e) {
-            log.error("[ERROR] 만료된 토큰입니다.", e);
-            throw new IllegalArgumentException("[ERROR] 만료된 토큰입니다.", e);
+            throw new InvalidJwtException("[ERROR] 만료된 토큰입니다.");
         } catch (UnsupportedJwtException e) {
-            log.error("[ERROR] 지원하지 않는 토큰입니다.", e);
-            throw new IllegalArgumentException("[ERROR] 지원하지 않는 토큰입니다.", e);
+            throw new InvalidJwtException("[ERROR] 지원하지 않는 토큰입니다.");
         } catch (MalformedJwtException e) {
-            log.error("토큰 형식 오류", e);
-            throw new IllegalArgumentException("[ERROR] 토큰 형식 오류입니다.", e);
+            throw new InvalidJwtException("[ERROR] 토큰 형식 오류입니다.");
         } catch (SignatureException e) {
-            log.error("유효하지 않은 토큰 서명", e);
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 토큰 서명입니다.", e);
+            throw new InvalidJwtException("[ERROR] 유효하지 않은 토큰 서명입니다.");
         }
     }
 
