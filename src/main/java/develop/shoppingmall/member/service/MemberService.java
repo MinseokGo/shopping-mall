@@ -1,12 +1,11 @@
 package develop.shoppingmall.member.service;
 
-import develop.shoppingmall.member.service.dto.FindLoginMemberDTO;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
-import develop.shoppingmall.member.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;
 import develop.shoppingmall.member.exception.LoginFailedException;
 import develop.shoppingmall.member.repository.MemberRepository;
+import develop.shoppingmall.member.service.dto.FindLoginMemberDTO;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +20,13 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public void login(LoginMemberRequest request) {
-        FindLoginMemberDTO passwordDTO = memberRepository.findPassword(request.email());
-        validateCorrectPassword(request, passwordDTO);
+    public void authenticate(String email, String password) {
+        FindLoginMemberDTO passwordDTO = memberRepository.findPassword(email);
+        validateCorrectPassword(password, passwordDTO);
     }
 
-    private void validateCorrectPassword(LoginMemberRequest request, FindLoginMemberDTO passwordDTO) {
-        if (!Objects.equals(passwordDTO.password(), request.password())) {
+    private void validateCorrectPassword(String password, FindLoginMemberDTO passwordDTO) {
+        if (!Objects.equals(passwordDTO.password(), password)) {
             throw new LoginFailedException();
         }
     }
