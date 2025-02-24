@@ -49,14 +49,14 @@ class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("멤버 로그인 테스트")
+    @DisplayName("멤버 인증 테스트")
     void test2() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "testPassword");
         memberService.authenticate(request.email(), request.password());
     }
 
     @Test
-    @DisplayName("실패 - 멤버 로그인 테스트")
+    @DisplayName("실패 - 멤버 인증 테스트")
     void test3() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "incorrectPassword");
         assertThatThrownBy(() -> memberService.authenticate(request.email(), request.password()))
