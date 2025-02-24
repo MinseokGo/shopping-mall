@@ -21,4 +21,11 @@ class JwtServiceTest {
                 jwtService.create("testEmail")
         ).contains("Bearer ");
     }
+
+    @Test
+    @DisplayName("JWT 파싱 테스트")
+    void test1() {
+        jwtService.parse(
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNaW5zZW9rIEdvIiwiaXNzIjoiTWluc2VvayBHbyBzaG9wcGluZyBtYWxsIHNlcnZlciIsImp0aSI6InRlc3RFbWFpbCIsImVtYWlsIjoidGVzdEVtYWlsIiwiaWF0IjoxNzQwNDAwOTEzLCJleHAiOjE3NDA0ODczMTN9.pOjwkGWqA0MDbN0_cHx-KZN_QRb_9CrcBBdJSFK5b_g");
+    }
 }
