@@ -37,11 +37,20 @@ class MemberQueryRepositoryImpl implements MemberQueryRepository {
                 .orElseThrow(MemberNotFoundException::new);
     }
 
-    private BooleanExpression isEqualEmail(String email) {
-        return member.email.eq(email);
-    }
-
     private BooleanExpression isValidMemberStatus() {
         return member.status.eq(MemberStatus.ACTIVE);
+    }
+
+    @Override
+    public long deleteByEmail(String email) {
+        return jpaQueryFactory
+                .update(member)
+                .set(member.status, MemberStatus.INACTIVE)
+                .where(isEqualEmail(email))
+                .execute();
+    }
+
+    private BooleanExpression isEqualEmail(String email) {
+        return member.email.eq(email);
     }
 }
