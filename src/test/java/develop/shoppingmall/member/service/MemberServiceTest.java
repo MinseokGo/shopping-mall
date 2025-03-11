@@ -52,15 +52,22 @@ class MemberServiceTest {
     @DisplayName("멤버 인증 테스트")
     void test2() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "testPassword");
-        memberService.authenticate(request.email(), request.password());
+        memberService.findByEmail(request.email(), request.password());
     }
 
     @Test
     @DisplayName("실패 - 멤버 인증 테스트")
     void test3() {
         LoginMemberRequest request = new LoginMemberRequest("testEmail", "incorrectPassword");
-        assertThatThrownBy(() -> memberService.authenticate(request.email(), request.password()))
+        assertThatThrownBy(() -> memberService.findByEmail(request.email(), request.password()))
                 .isInstanceOf(LoginFailedException.class)
                 .hasMessage("[ERROR] 로그인에 실패 하였습니다.");
+    }
+
+    @Test
+    @DisplayName("멤버 탈퇴 테스트")
+    void test4() {
+        String email = "testEmail";
+        memberRepository.deleteByEmail(email);
     }
 }
