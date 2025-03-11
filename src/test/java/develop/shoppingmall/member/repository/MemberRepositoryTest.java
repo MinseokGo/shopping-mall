@@ -42,4 +42,22 @@ class MemberRepositoryTest {
                 memberRepository.findPassword(email).password()
         ).isEqualTo("testPassword");
     }
+
+    @Test
+    @DisplayName("멤버 탈퇴 시 멤버 활성 상태 변경 쿼리 메서드 테스트")
+    void test2() {
+        String email = "testEmail";
+        assertThat(
+                memberRepository.deleteByEmail(email)
+        ).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("실패 - 멤버 탈퇴 시 존재하지 않는 이메일로 탈퇴 시도")
+    void test3() {
+        String email = "notExistEmail";
+        assertThat(
+                memberRepository.deleteByEmail(email)
+        ).isEqualTo(0);
+    }
 }
