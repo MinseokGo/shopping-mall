@@ -20,7 +20,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public void authenticate(String email, String password) {
+    public void findByEmail(String email, String password) {
         FindLoginMemberDTO passwordDTO = memberRepository.findPassword(email);
         validateCorrectPassword(password, passwordDTO);
     }
@@ -49,5 +49,10 @@ public class MemberService {
                 request.email(),
                 request.password()
         );
+    }
+
+    @Transactional
+    public void delete(String email) {
+        memberRepository.deleteByEmail(email);
     }
 }
