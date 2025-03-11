@@ -1,14 +1,15 @@
 package develop.shoppingmall.member.controller;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-
+import develop.shoppingmall.auth.AuthService;
+import develop.shoppingmall.auth.dto.LoginMemberRequest;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
 import develop.shoppingmall.member.repository.MemberRepository;
+import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
+import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,9 @@ public class MemberControllerTest {
 
     @Autowired
     EntityManagerFactory entityManagerFactory;
+
+    @Autowired
+    AuthService authService;
 
     @Autowired
     MemberRepository memberRepository;
@@ -67,16 +71,7 @@ public class MemberControllerTest {
     @Test
     @DisplayName("실패 - 멤버 회원가입 통합 테스트")
     void test1() {
-        JoinMemberRequest oldRequest = new JoinMemberRequest("testName", "testEmail@email.com", "testPassword");
-        given()
-                .baseUri("http://localhost:" + port)
-                .contentType(ContentType.JSON)
-                .body(oldRequest)
-                .when()
-                .post("/members")
-                .then()
-                .statusCode(201)
-                .body(equalTo("회원가입이 완료 되었습니다."));
+        join();
 
         JoinMemberRequest newRequest = new JoinMemberRequest("testName", "testEmail@email.com", "testPassword");
         given()
@@ -88,5 +83,34 @@ public class MemberControllerTest {
                 .then()
                 .statusCode(409)
                 .body(equalTo("[ERROR] 이미 존재하는 이메일입니다."));
+    }
+
+    @Test
+    @DisplayName("멤버 탈퇴 통합 테스트")
+    void test2() {
+        join();
+
+        String jwt = authService.signIn(new LoginMemberRequest("testEmail@email.com", "testPassword"));
+        given()
+                .baseUri("http://localhost:" + port)
+                .contentType(ContentType.JSON)
+                .header("Authorization", jwt)
+                .when()
+                .then()
+                .statusCode(200)
+                .body(equalTo("회원 탈퇴가 정상적으로 처리되었습니다."));
+    }
+
+    void join() {
+        JoinMemberRequest oldRequest = new JoinMemberRequest("testName", "testEmail@email.com", "testPassword");
+        given()
+                .baseUri("http://localhost:" + port)
+                .contentType(ContentType.JSON)
+                .body(oldRequest)
+                .when()
+                .post("/members")
+                .then()
+                .statusCode(201)
+                .body(equalTo("회원가입이 완료 되었습니다."));
     }
 }
