@@ -28,6 +28,7 @@ class JwtServiceTest {
     @Test
     @DisplayName("JWT 파싱 테스트")
     void test1() {
+        String token = jwtService.create("testEmail");
         jwtService.parse(token);
     }
 
