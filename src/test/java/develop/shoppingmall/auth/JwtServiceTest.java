@@ -1,5 +1,6 @@
 package develop.shoppingmall.auth;
 
+import develop.shoppingmall.auth.service.JwtService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;

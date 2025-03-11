@@ -1,6 +1,6 @@
 package develop.shoppingmall.member.service;
 
-import develop.shoppingmall.auth.dto.LoginMemberRequest;
+import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.exception.AlreadyExistMemberEmailException;

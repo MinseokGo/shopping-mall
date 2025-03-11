@@ -1,14 +1,15 @@
-package develop.shoppingmall.auth;
+package develop.shoppingmall.auth.service;
 
-import static develop.shoppingmall.auth.JwtUtils.HOURS;
-import static develop.shoppingmall.auth.JwtUtils.MILLISECONDS;
-import static develop.shoppingmall.auth.JwtUtils.MINUTES;
-import static develop.shoppingmall.auth.JwtUtils.SECONDS;
-import static develop.shoppingmall.auth.JwtUtils.SHOPPING_MALL_AUTH_SUBJECT;
-import static develop.shoppingmall.auth.JwtUtils.TOKEN_BEGIN_INDEX;
-import static develop.shoppingmall.auth.JwtUtils.TOKEN_PREFIX;
-import static develop.shoppingmall.auth.JwtUtils.TOKEN_PROVIDER;
-import static develop.shoppingmall.auth.JwtUtils.TOKEN_SIGN_CLAIM;
+import develop.shoppingmall.auth.service.dto.JwtProperties;
+import static develop.shoppingmall.common.utils.JwtConstants.HOURS;
+import static develop.shoppingmall.common.utils.JwtConstants.MILLISECONDS;
+import static develop.shoppingmall.common.utils.JwtConstants.MINUTES;
+import static develop.shoppingmall.common.utils.JwtConstants.SECONDS;
+import static develop.shoppingmall.common.utils.JwtConstants.SHOPPING_MALL_AUTH_SUBJECT;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_BEGIN_INDEX;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_PREFIX;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_PROVIDER;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_SIGN_CLAIM;
 import develop.shoppingmall.auth.exception.InvalidJwtException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

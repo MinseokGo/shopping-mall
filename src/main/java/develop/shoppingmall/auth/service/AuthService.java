@@ -1,6 +1,7 @@
-package develop.shoppingmall.auth;
+package develop.shoppingmall.auth.service;
 
-import develop.shoppingmall.auth.dto.LoginMemberRequest;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_HEADER_KEY;
+import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class AuthService {
     }
 
     public String authenticate(HttpServletRequest request) {
-        String jwt = request.getHeader("Authorization");
+        String jwt = request.getHeader(TOKEN_HEADER_KEY);
         return jwtService.parse(jwt);
     }
 }

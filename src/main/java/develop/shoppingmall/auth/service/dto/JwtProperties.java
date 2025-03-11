@@ -1,4 +1,4 @@
-package develop.shoppingmall.auth;
+package develop.shoppingmall.auth.service.dto;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

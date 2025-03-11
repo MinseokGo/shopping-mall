@@ -1,7 +1,7 @@
 package develop.shoppingmall.member.controller;
 
-import develop.shoppingmall.auth.AuthService;
-import develop.shoppingmall.auth.dto.LoginMemberRequest;
+import develop.shoppingmall.auth.service.AuthService;
+import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
 import develop.shoppingmall.member.repository.MemberRepository;
 import static io.restassured.RestAssured.given;

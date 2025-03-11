@@ -1,6 +1,6 @@
 package develop.shoppingmall.auth;
 
-import develop.shoppingmall.auth.dto.LoginMemberRequest;
+import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
 import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.repository.MemberRepository;
 import static io.restassured.RestAssured.given;

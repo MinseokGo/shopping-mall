@@ -1,6 +1,6 @@
 package develop.shoppingmall.member.controller;
 
-import develop.shoppingmall.auth.AuthService;
+import develop.shoppingmall.auth.service.AuthService;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
 import develop.shoppingmall.member.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;

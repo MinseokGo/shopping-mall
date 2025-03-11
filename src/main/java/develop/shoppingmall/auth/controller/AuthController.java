@@ -1,6 +1,8 @@
-package develop.shoppingmall.auth;
+package develop.shoppingmall.auth.controller;
 
-import develop.shoppingmall.auth.dto.LoginMemberRequest;
+import static develop.shoppingmall.common.utils.JwtConstants.TOKEN_HEADER_KEY;
+import develop.shoppingmall.auth.service.AuthService;
+import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class AuthController {
     ResponseEntity<String> signIn(@Valid @RequestBody LoginMemberRequest request) {
         String jwt = authService.signIn(request);
         return ResponseEntity.ok()
-                .header("Authorization", jwt)
+                .header(TOKEN_HEADER_KEY, jwt)
                 .body("로그인에 성공 하였습니다.");
     }
 }
