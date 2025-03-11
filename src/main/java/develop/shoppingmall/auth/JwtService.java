@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class JwtService {
@@ -65,7 +66,7 @@ public class JwtService {
     }
 
     private void validTokenPrefix(String token) {
-        if (!token.startsWith(TOKEN_PREFIX)) {
+        if (!StringUtils.hasText(token) || !token.startsWith(TOKEN_PREFIX)) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 토큰입니다.");
         }
     }
