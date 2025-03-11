@@ -18,4 +18,10 @@ class MemberExceptionHandler {
         return ResponseEntity.status(exception.getStatus())
                 .body(exception.getMessage());
     }
+
+    @ExceptionHandler(MemberNotFoundException.class)
+    ResponseEntity<String> memberNotFoundException(MemberNotFoundException exception) {
+        return ResponseEntity.status(exception.getStatus())
+                .body(exception.getMessage());
+    }
 }
