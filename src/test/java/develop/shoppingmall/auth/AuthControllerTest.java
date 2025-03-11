@@ -5,7 +5,6 @@ import develop.shoppingmall.member.domain.Member;
 import develop.shoppingmall.member.repository.MemberRepository;
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
-import jakarta.persistence.EntityManager;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,9 +21,6 @@ class AuthControllerTest {
 
     @LocalServerPort
     private int port;
-
-    @Autowired
-    EntityManager entityManager;
 
     @Autowired
     MemberRepository memberRepository;
