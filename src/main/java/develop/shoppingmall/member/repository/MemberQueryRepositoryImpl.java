@@ -1,6 +1,7 @@
 package develop.shoppingmall.member.repository;
 
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import develop.shoppingmall.member.domain.MemberStatus;
 import develop.shoppingmall.member.domain.QMember;
@@ -10,8 +11,8 @@ import java.util.Optional;
 
 class MemberQueryRepositoryImpl implements MemberQueryRepository {
 
-    private final JPAQueryFactory jpaQueryFactory;
     private final QMember member;
+    private final JPAQueryFactory jpaQueryFactory;
 
     MemberQueryRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
@@ -29,10 +30,18 @@ class MemberQueryRepositoryImpl implements MemberQueryRepository {
                                         )
                                 )
                                 .from(member)
-                                .where(member.email.eq(email))
-                                .where(member.status.eq(MemberStatus.ACTIVE))
+                                .where(isEqualEmail(email))
+                                .where(isValidMemberStatus())
                                 .fetchOne()
                 )
                 .orElseThrow(MemberNotFoundException::new);
+    }
+
+    private BooleanExpression isEqualEmail(String email) {
+        return member.email.eq(email);
+    }
+
+    private BooleanExpression isValidMemberStatus() {
+        return member.status.eq(MemberStatus.ACTIVE);
     }
 }
