@@ -1,15 +1,16 @@
 package develop.shoppingmall.member.controller;
 
-import develop.shoppingmall.auth.service.AuthService;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 import develop.shoppingmall.auth.controller.dto.LoginMemberRequest;
+import develop.shoppingmall.auth.service.AuthService;
 import develop.shoppingmall.member.controller.dto.JoinMemberRequest;
 import develop.shoppingmall.member.repository.MemberRepository;
-import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
-import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
