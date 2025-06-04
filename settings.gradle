@@ -1,3 +1,8 @@
 rootProject.name = 'shopping-mall'
 
-include "common-module", "auth-service", "member-service"
+include("eureka-server")
+include("gateway-service")
+
+include("common-module")
+include("auth-service")
+include("member-service")
