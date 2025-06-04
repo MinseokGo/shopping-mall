@@ -1,4 +1,4 @@
-package develop.common;
+package develop.common.domain;
 
 public enum EntityStatus {
 

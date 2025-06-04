@@ -1,4 +1,4 @@
-package develop.common;
+package develop.common.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -31,5 +31,5 @@ public abstract class BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
-    private EntityStatus status;
+    private EntityStatus status = EntityStatus.ACTIVE;
 }
