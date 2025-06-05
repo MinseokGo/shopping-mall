@@ -1,4 +1,4 @@
-package develop.member.api;
+package develop.member.command.api;
 
 import develop.member.command.application.MemberCommandService;
 import develop.member.command.dto.SignUpRequest;

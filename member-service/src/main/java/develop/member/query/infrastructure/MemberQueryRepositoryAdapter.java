@@ -4,7 +4,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import develop.common.domain.EntityStatus;
 import develop.member.command.domain.QMember;
-import develop.member.query.MemberRepository;
+import develop.member.query.domain.MemberRepository;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
 

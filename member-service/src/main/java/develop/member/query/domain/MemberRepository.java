@@ -1,4 +1,4 @@
-package develop.member.query;
+package develop.member.query.domain;
 
 public interface MemberRepository {
 

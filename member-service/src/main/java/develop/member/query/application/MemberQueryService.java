@@ -2,7 +2,7 @@ package develop.member.query.application;
 
 import develop.common.dto.SignInRequestMessage;
 import develop.common.dto.SignInResponseMessage;
-import develop.member.query.MemberRepository;
+import develop.member.query.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
