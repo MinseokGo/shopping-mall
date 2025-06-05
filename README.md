@@ -3,10 +3,10 @@
 ## 사용 기술
 * Java 17
 * Spring Boot 3
-* MySQL 8.0
-* JPA
-* QueryDSL 5.0.1
-* JWT
+* MySQL 8.0, JPA, QueryDSL 5.0.1
+* JWT, Spring Security
+* Apache Kafka
+* Spring Gateway, Spring Eureka Server
 
 ## API 명세서
 ### 회원(Member)
